@@ -31,4 +31,4 @@ For creating order you can use specific order Id or default value.
 
 You can find bugs in the Google docs.
 
-https://docs.google.com/spreadsheets/d/1gfi6GCcdrJezI50Z8UcSOdmjxPX1q2r-1kLh1hMrBGw/edit#gid=0
+https://docs.google.com/spreadsheets/d/1gfi6GCcdrJezI50Z8UcSOdmjxPX1q2r-1kLh1hMrBGw/edit?usp=sharing
