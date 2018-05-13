@@ -35,6 +35,11 @@ public class PetApiMethods {
             "  \"status\": \"available\"\n" +
             "}");
 
+    /**
+     * Create a new pet
+     * @return petID
+     * @throws UnirestException
+     */
 
 
     protected String createPet() throws UnirestException {
@@ -55,6 +60,15 @@ public class PetApiMethods {
         return id;
     }
 
+    /**
+     *
+     * Create a new Pet with current ID
+     *
+     * @param id
+     * @return
+     * @throws UnirestException
+     */
+
     protected String createPet(String id) throws UnirestException {
         System.out.println("Create a pet");
         jsonObj.put("id", id);
@@ -69,6 +83,15 @@ public class PetApiMethods {
 
         return id;
     }
+
+
+    /**
+     *
+     * Check pet with selected ID after creating
+     *
+     * @param petID
+     * @throws UnirestException
+     */
 
     protected void checkCreatedPet(String petID) throws UnirestException {
         System.out.println("Check a pet after creating");
@@ -88,6 +111,14 @@ public class PetApiMethods {
         System.out.println("The pet with ID=" + petID + " was created successfully");
     }
 
+    /**
+     * Update already existed Pet with current ID
+     * Change its name to the newName
+     *
+     * @param id
+     * @param newName
+     * @throws UnirestException
+     */
     protected void updatePetName(String id, String newName) throws UnirestException {
         System.out.println("Update pet name to " + newName);
         jsonObj.put("id", id);
@@ -108,6 +139,13 @@ public class PetApiMethods {
 
     }
 
+    /**
+     *
+     *Delete the pet with selected ID
+     *
+     * @param id
+     * @throws UnirestException
+     */
     protected void deletePet(String id) throws UnirestException {
 
         System.out.println("Delete pet with ID=" + id);
@@ -119,6 +157,14 @@ public class PetApiMethods {
         getResponse(deletingResponse);
     }
 
+    /**
+     *
+     * Check that deleted pet with current ID isn't exist
+     *
+     *
+     * @param id
+     * @throws UnirestException
+     */
     protected void checkPetAfterDeleting(String id) throws UnirestException {
         System.out.println("Check pet with ID=" + id + " after deleting");
         checkingResponse = Unirest.get("http://petstore.swagger.io/v2/pet/" + id)
@@ -135,13 +181,25 @@ public class PetApiMethods {
 
     }
 
-
+    /**
+     *
+     * Check response status ode equals expected code
+     *
+     * @param response
+     * @param expectedCode
+     */
     protected void checkResponseStatus(HttpResponse<JsonNode> response, int expectedCode) {
         System.out.println("Response status is " + response.getStatus());
         Assert.assertEquals(expectedCode, response.getStatus());
 
     }
 
+    /**
+     *
+     * Print response body
+     *
+     * @param response
+     */
     protected void getResponse(HttpResponse<JsonNode> response) {
         System.out.println("The response body is:");
         System.out.println(response.getBody().getObject().toString(2));

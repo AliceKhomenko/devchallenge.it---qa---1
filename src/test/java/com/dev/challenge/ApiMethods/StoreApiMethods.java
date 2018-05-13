@@ -25,13 +25,15 @@ public class StoreApiMethods extends PetApiMethods {
             "  \"complete\": true\n" +
             "}");
 
-    private String getCurrentDate() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        Date date = new Date();
-        return dateFormat.format(date);
+    /**
+     * Create a new order with selected pet
+     *
+     *
+     * @param petID
+     * @return
+     * @throws UnirestException
+     */
 
-
-    }
 
     protected String createOrder(String petID) throws UnirestException {
         jsonObj2.put("petId",petID);
@@ -47,7 +49,17 @@ public class StoreApiMethods extends PetApiMethods {
 
     }
 
-    protected String createOrder(String idOrder, String petID) throws UnirestException {
+    /**
+     *
+     * create a new order with selected pet and selected ID
+     *
+     *
+     * @param petID
+     * @param idOrder
+     * @return
+     * @throws UnirestException
+     */
+    protected String createOrder(String petID, String idOrder) throws UnirestException {
 
         System.out.println(jsonObj2.toString(2));
         System.out.println("Creating an order");
@@ -63,6 +75,14 @@ public class StoreApiMethods extends PetApiMethods {
         return idOrder;
 
     }
+
+
+    /**
+     *
+     * Check created order with selected ID
+     * @param idOrder
+     * @throws UnirestException
+     */
     protected void checkCreatedOrder(String idOrder) throws UnirestException {
         System.out.println("Check the order after creating");
 
@@ -80,4 +100,17 @@ public class StoreApiMethods extends PetApiMethods {
         Assert.assertEquals(json, jsonToCompare);
         System.out.println("The order with ID=" + idOrder + " was created successfully");
     }
+    /**
+     *
+     * Return current date un expected format
+     *
+     * @return
+     */
+    private String getCurrentDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+
 }
